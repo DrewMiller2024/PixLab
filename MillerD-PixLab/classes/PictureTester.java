@@ -125,6 +125,14 @@ public class PictureTester
     canvas.explore();
   }
   
+  public static void testCopy2() {
+      Picture beach = new Picture("beach.jpg");
+      Picture seagull = new Picture("seagull.jpg");
+      beach.explore();
+      beach.copy2(seagull, 290, 490, 230, 325, 235, 344);
+      beach.explore();
+  }
+  
   /** Method to test edgeDetection */
   public static void testEdgeDetection()
   {
@@ -159,12 +167,12 @@ public class PictureTester
     //testMirrorDiagonal();
     //testMirrorTemple();
     //testMirrorArms();
-    testMirrorGull();
     //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
+    testCopy2();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
