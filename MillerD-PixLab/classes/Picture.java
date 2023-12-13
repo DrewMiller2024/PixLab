@@ -236,7 +236,7 @@ public class Picture extends SimplePicture
             for (int col = 0; col < width; col++)
             {
                 leftPixel = pixels[row][col];
-                rightPixel = pixels[pixels.length-1-row][width-1-col];
+                rightPixel = pixels[(pixels.length)-1-row][width-1-col];
                 rightPixel.setColor(leftPixel.getColor());
             }
         } 
@@ -266,7 +266,6 @@ public class Picture extends SimplePicture
         int mirrorPoint = 276;
         Pixel leftPixel = null;
         Pixel rightPixel = null;
-        int count = 0;
         Pixel[][] pixels = this.getPixels2D();
 
         // loop through the rows
@@ -280,10 +279,8 @@ public class Picture extends SimplePicture
                 rightPixel = pixels[row]                       
                 [mirrorPoint - col + mirrorPoint];
                 rightPixel.setColor(leftPixel.getColor());
-                count++;
             }
         }
-        System.out.println("execuations: " + count);
     }
 
     public void mirrorArms()
@@ -291,7 +288,6 @@ public class Picture extends SimplePicture
         int[][] loops = new int[2][4];
         loops[0][0] = 156; loops[0][1] = 195; loops[0][2] = 100; loops[0][3] = 170;
         loops[1][0] = 171; loops[1][1] = 195; loops[1][2] = 234; loops[1][3] = 294;
-        int count = 0;
         for (int i = 0; i < 2; i++) {
             int mirrorPoint = loops[i][1];
             Pixel upPixel = null;
@@ -306,11 +302,9 @@ public class Picture extends SimplePicture
                     upPixel = pixels[row][col];      
                     downPixel = pixels[mirrorPoint+mirrorPoint-row][col];
                     downPixel.setColor(upPixel.getColor());
-                    count++;
                 }
             }
         }
-        System.out.println("execuations: " + count);
     }
 
     public void mirrorGull() {
@@ -401,6 +395,27 @@ public class Picture extends SimplePicture
         this.copy(flower2,500,0);
         this.mirrorVertical();
         this.write("collage.jpg");
+    }
+    
+    public void myCollage() {
+        Picture seagull = new Picture("seagull.jpg");
+        Picture caterpillar = new Picture("caterpillar.jpg");
+        Picture wall = new Picture("wall.jpg");
+        Picture smallMyPicture = new Picture("blue-mark.jpg");
+        caterpillar.mirrorOpposite();
+        this.copy(caterpillar, 0, 0);
+        wall.mirrorDiagonal();
+        this.copy2(wall, 180, 0, 160, 440, 160, 440);
+        smallMyPicture.mirrorHorizontal();
+        smallMyPicture.mirrorVertical();
+        smallMyPicture.mirrorDiagonal();
+        smallMyPicture.negate();
+        smallMyPicture.mirrorTemple();
+        smallMyPicture.mirrorGull();
+        smallMyPicture.mirrorVerticalRightToLeft();
+        smallMyPicture.mirrorHorizontalBotToTop();
+        this.copy2(smallMyPicture, 0, 350, 0, 600, 0, 600);
+        this.copy2(seagull, 200, 400, 230, 325, 235, 344);
     }
 
     /** Method to show large changes in color 

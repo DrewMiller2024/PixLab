@@ -125,6 +125,13 @@ public class PictureTester
     canvas.explore();
   }
   
+  public static void testMyCollage()
+  {
+    Picture canvas = new Picture("640x480.jpg");
+    canvas.myCollage();
+    canvas.explore();
+  }
+  
   public static void testCopy2() {
       Picture beach = new Picture("beach.jpg");
       Picture seagull = new Picture("seagull.jpg");
@@ -167,12 +174,12 @@ public class PictureTester
     //testMirrorDiagonal();
     //testMirrorTemple();
     //testMirrorArms();
-    //testMirrorArms();
     //testMirrorGull();
     //testMirrorDiagonal();
     //testCollage();
     //testCopy();
-    testCopy2();
+    testMyCollage();
+    //testCopy2();
     //testEdgeDetection();
     //testEdgeDetection2();
     //testChromakey();
